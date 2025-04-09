@@ -28,6 +28,38 @@ class User
         $_SESSION['users'] = $users;
     }
 
+    public static function find($id)
+    {
+        $users = $_SESSION['users'] ?? [];
+
+        foreach ($users as $user) {
+            if ($user['id'] == $id) {
+                return $user;
+            }
+        }
+
+        return null;
+    }
+
+    public static function update($id, $name, $email)
+    {
+        if (!isset($_SESSION['users'])) {
+            return;
+        };
+
+        $updateUsers = [];
+
+        foreach ($_SESSION['users'] as $user) {
+            if ((int)$user['id'] === (int)$id) {
+                $user['name'] = $name;
+                $user['email'] = $email;
+            }
+            $updateUsers[] = $user;
+        }
+
+        $_SESSION['users'] = $updateUsers;
+    }
+
     public static function delete($id)
     {
         $users = $_SESSION['users'] ?? [];

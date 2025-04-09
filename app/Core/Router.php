@@ -29,9 +29,17 @@ class Router
                 $controller = new UserController();
                 $controller->create();
                 break;
+            case '/usuarios/edit':
+                $controller = new UserController();
+                $controller->edit();
+                break;
             case '/usuarios/store':
                 $controller = new UserController();
                 $controller->store();
+                break;
+            case '/usuarios/update':
+                $controller = new UserController();
+                $controller->update();
                 break;
             case '/usuarios/delete':
                 $controller = new UserController();

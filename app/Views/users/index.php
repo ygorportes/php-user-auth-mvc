@@ -10,9 +10,12 @@
         <?php foreach ($users as $user): ?>
             <li>
                 <?= $user['id'] ?> - <?= htmlspecialchars($user['name']) ?> (<?= htmlspecialchars($user['email']) ?>)
+                <a href="/usuarios/edit?id=<?= $user['id'] ?>">[Editar]</a>
                 <a href="/usuarios/delete?id=<?= $user['id'] ?>">[Excluir]</a>
             </li>
         <?php endforeach; ?>
     </ul>
+
+    <a href="/usuarios/create">[Criar Usuário]</a>
 </body>
 </html>

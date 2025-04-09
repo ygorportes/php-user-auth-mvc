@@ -26,7 +26,35 @@ class UserController
         User::store($name, $email);
 
         header("Location: /usuarios");
-        exit();
+        exit;
+    }
+
+    public function edit()
+    {
+        $id = $_GET['id'] ?? null;
+
+        if ($id === null) {
+            header("Location: /usuarios");
+            exit;
+        }
+
+        $user = User::find($id);
+
+        require_once __DIR__ . "/../Views/users/edit.php";
+    }
+
+    public function update()
+    {
+        $id = $_POST['id'] ?? null;
+        $name = $_POST['name'] ?? '';
+        $email = $_POST['email'] ?? '';
+
+        if ($id !== null) {
+            User::update($id, $name, $email);
+        }
+        print_r($_SESSION['users']);
+        header("Location: /usuarios");
+        exit;
     }
 
     public function delete()
@@ -38,6 +66,6 @@ class UserController
         }
 
         header("Location: /usuarios");
-        exit();
+        exit;
     }
 }
