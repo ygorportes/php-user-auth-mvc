@@ -25,6 +25,14 @@ class Router
                 $controller = new AuthController();
                 $controller->login();
                 break;
+            case '/usuarios/create':
+                $controller = new UserController();
+                $controller->create();
+                break;
+            case '/usuarios/store':
+                $controller = new UserController();
+                $controller->store();
+                break;
             default:
                 http_response_code(404);
                 echo "Página não encontrada: $uri";
