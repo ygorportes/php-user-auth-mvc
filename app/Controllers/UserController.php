@@ -28,4 +28,16 @@ class UserController
         header("Location: /usuarios");
         exit();
     }
+
+    public function delete()
+    {
+        $id = $_GET['id'] ?? null;
+
+        if ($id !== null) {
+            User::delete($id);
+        }
+
+        header("Location: /usuarios");
+        exit();
+    }
 }

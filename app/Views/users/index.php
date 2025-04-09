@@ -10,6 +10,7 @@
         <?php foreach ($users as $user): ?>
             <li>
                 <?= $user['id'] ?> - <?= htmlspecialchars($user['name']) ?> (<?= htmlspecialchars($user['email']) ?>)
+                <a href="/usuarios/delete?id=<?= $user['id'] ?>">[Excluir]</a>
             </li>
         <?php endforeach; ?>
     </ul>

@@ -27,4 +27,13 @@ class User
 
         $_SESSION['users'] = $users;
     }
+
+    public static function delete($id)
+    {
+        $users = $_SESSION['users'] ?? [];
+
+        $users = array_filter($users, fn($user) => $user['id'] != $id);
+
+        $_SESSION['users'] = array_values($users);
+    }
 }

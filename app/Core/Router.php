@@ -33,6 +33,10 @@ class Router
                 $controller = new UserController();
                 $controller->store();
                 break;
+            case '/usuarios/delete':
+                $controller = new UserController();
+                $controller->delete();
+                break;
             default:
                 http_response_code(404);
                 echo "Página não encontrada: $uri";
