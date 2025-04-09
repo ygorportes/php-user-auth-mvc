@@ -23,10 +23,9 @@ class UserController
         $name = $_POST['name'];
         $email = $_POST['email'];
 
-        echo "Usuário salvo com sucesso! </br>";
-        echo "Nome: " . htmlspecialchars($name) . "</br>";
-        echo "Email: " . htmlspecialchars($email) . "</br>";
+        User::store($name, $email);
 
-        echo '<a href="/usuarios">Voltar para a lista</a>';
+        header("Location: /usuarios");
+        exit();
     }
 }
