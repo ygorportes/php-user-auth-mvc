@@ -1,33 +1,38 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Cadastrar Usuário</title>
-</head>
-<body>
-    <h1>Cadastrar Novo Usuário</h1>
+<?php
 
-    <?php
-    use App\Core\Flash;
-    $flash = Flash::get();
-    ?>
+use App\Core\Flash;
 
-    <?php if ($flash): ?>
-        <div style="padding: 10px; background: <?= $flash['type'] === 'error' ? '#f8d7da' : '#d4edda' ?>; color: #000; border: 1px solid #ccc; margin-bottom: 15px;">
-            <?= htmlspecialchars($flash['message']) ?>
+$flash = \App\Core\Flash::get();
+ob_start();
+?>
+
+<div class="container mt-4">
+    <div class="row align-items-center">
+        <div class="col-md-10 mx-auto col-lg-5">
+            <h1 class="mb-4">Cadastro</h1>
+
+            <form method="POST" action="/usuarios/store" class="card p-4 shadow-sm">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nome:</label>
+                    <input type="text" name="name" id="name" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" name="email" id="email" class="form-control">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <a href="/usuarios" class="btn btn-secondary mt-2">Cancelar</a>
+            </form>
         </div>
-    <?php endif; ?>
+    </div>
+</div>
 
-    <form action="/usuarios/store" method="post">
-        <label>Nome:</label>
-        <input type="text" name="name"><br>
 
-        <label>Email:</label>
-        <input type="email" name="email"><br>
 
-        <button type="submit">Salvar</button>
-    </form>
-
-    <a href="/usuarios">← Voltar para a lista</a>
-</body>
-</html>
+<?php
+$content = ob_get_clean();
+$flash = Flash::get();
+require __DIR__ . '/../layout.php';
+?>
