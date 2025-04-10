@@ -3,6 +3,7 @@
 namespace App\Core;
 
 use App\Controllers\AuthController;
+use App\Controllers\DashboardController;
 use App\Controllers\UserController;
 
 class Router
@@ -15,7 +16,8 @@ class Router
         switch ($uri) {
             case '':
             case '/':
-                echo "Home";
+                $controller = new DashboardController();
+                $controller->index();
                 break;
             case '/usuarios':
                 $controller = new UserController();
