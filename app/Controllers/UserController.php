@@ -3,12 +3,15 @@
 namespace App\Controllers;
 
 use App\Core\Flash;
+use App\Middleware\AuthMiddleware;
 use App\Models\User;
 
 class UserController
 {
     public function index()
     {
+        AuthMiddleware::check();
+
         $users = User::all();
 
         require_once __DIR__ . "/../Views/users/index.php";
@@ -16,6 +19,7 @@ class UserController
 
     public function create()
     {
+        AuthMiddleware::check();
         require_once __DIR__ . "/../Views/users/create.php";
     }
 
@@ -44,6 +48,8 @@ class UserController
 
     public function edit()
     {
+        AuthMiddleware::check();
+
         $id = $_GET['id'] ?? null;
 
         if ($id === null) {

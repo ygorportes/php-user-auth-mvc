@@ -23,7 +23,15 @@ class Router
                 break;
             case '/login':
                 $controller = new AuthController();
-                $controller->login();
+                if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                    $controller->showLogin();
+                } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $controller->login();
+                }
+                break;
+            case '/logout':
+                $controller = new AuthController();
+                $controller->logout();
                 break;
             case '/usuarios/create':
                 $controller = new UserController();
