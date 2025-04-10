@@ -30,6 +30,12 @@ class UserController
             exit;
         }
 
+        if (User::existsByEmail($email)) {
+            Flash::set("Este email já está em uso.", "error");
+            header("Location: /usuarios/create");
+            exit;
+        }
+
         User::store($name, $email);
         Flash::set("Usuario cadastrado com sucesso!");
         header("Location: /usuarios");
@@ -58,6 +64,12 @@ class UserController
 
         if (empty($name) || empty($email)) {
             Flash::set("Todos os campos são obrigatórios.", "error");
+            header("Location: /usuarios/edit?id=$id");
+            exit;
+        }
+
+        if (User::existsByEmail($email, $id)) {
+            Flash::set("Este email já está em uso por outro usuário.", "error");
             header("Location: /usuarios/edit?id=$id");
             exit;
         }

@@ -68,4 +68,17 @@ class User
 
         $_SESSION['users'] = array_values($users);
     }
+
+    public static function existsByEmail($email, $ignoreId = null)
+    {
+        $users = $_SESSION['users'] ?? [];
+
+        foreach ($users as $user) {
+            if ($user['email'] === $email && $user['id'] != $ignoreId) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
