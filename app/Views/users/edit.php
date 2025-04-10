@@ -5,18 +5,29 @@
     <title>Editar Usuário</title>
 </head>
 <body>
-<h1>Editar Usuário</h1>
+    <h1>Editar Usuário</h1>
 
-<form action="/usuarios/update" method="POST">
-    <input type="hidden" name="id" value="<?= $user['id'] ?>">
+    <?php
+    use App\Core\Flash;
+    $flash = Flash::get();
+    ?>
 
-    <label for="name">Nome:</label>
-    <input type="text" name="name" id="name" value="<?= htmlspecialchars($user['name']) ?>" required>
+    <?php if ($flash): ?>
+        <div style="padding: 10px; background: <?= $flash['type'] === 'error' ? '#f8d7da' : '#d4edda' ?>; color: #000; border: 1px solid #ccc; margin-bottom: 15px;">
+            <?= htmlspecialchars($flash['message']) ?>
+        </div>
+    <?php endif; ?>
 
-    <label for="email">Email:</label>
-    <input type="email" name="email" id="email" value="<?= htmlspecialchars($user['email']) ?>" required>
+    <form action="/usuarios/update" method="POST">
+        <input type="hidden" name="id" value="<?= $user['id'] ?>">
 
-    <button type="submit">Atualizar</button>
-</form>
+        <label for="name">Nome:</label>
+        <input type="text" name="name" id="name" value="<?= htmlspecialchars($user['name']) ?>">
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" value="<?= htmlspecialchars($user['email']) ?>">
+
+        <button type="submit">Atualizar</button>
+    </form>
 </body>
 </html>

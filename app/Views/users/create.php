@@ -5,18 +5,29 @@
     <title>Cadastrar Usuário</title>
 </head>
 <body>
-<h1>Cadastrar Novo Usuário</h1>
+    <h1>Cadastrar Novo Usuário</h1>
 
-<form action="/usuarios/store" method="post">
-    <label>Nome:</label>
-    <input type="text" name="name" required><br>
+    <?php
+    use App\Core\Flash;
+    $flash = Flash::get();
+    ?>
 
-    <label>Email:</label>
-    <input type="email" name="email" required><br>
+    <?php if ($flash): ?>
+        <div style="padding: 10px; background: <?= $flash['type'] === 'error' ? '#f8d7da' : '#d4edda' ?>; color: #000; border: 1px solid #ccc; margin-bottom: 15px;">
+            <?= htmlspecialchars($flash['message']) ?>
+        </div>
+    <?php endif; ?>
 
-    <button type="submit">Salvar</button>
-</form>
+    <form action="/usuarios/store" method="post">
+        <label>Nome:</label>
+        <input type="text" name="name"><br>
 
-<a href="/usuarios">← Voltar para a lista</a>
+        <label>Email:</label>
+        <input type="email" name="email"><br>
+
+        <button type="submit">Salvar</button>
+    </form>
+
+    <a href="/usuarios">← Voltar para a lista</a>
 </body>
 </html>

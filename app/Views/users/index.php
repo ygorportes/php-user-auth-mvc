@@ -6,6 +6,17 @@
 </head>
 <body>
     <h1>Usuários cadastrados</h1>
+
+    <?php
+    use App\Core\Flash;
+    $flash = Flash::get();
+    ?>
+
+    <?php if ($flash): ?>
+        <div style="padding: 10px; background: <?= $flash['type'] === 'error' ? '#f8d7da' : '#d4edda' ?>; color: #000; border: 1px solid #ccc; margin-bottom: 15px;">
+            <?= htmlspecialchars($flash['message']) ?>
+        </div>
+    <?php endif; ?>
     <ul>
         <?php foreach ($users as $user): ?>
             <li>

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Core\Flash;
 use App\Models\User;
 
 class UserController
@@ -23,8 +24,14 @@ class UserController
         $name = $_POST['name'];
         $email = $_POST['email'];
 
-        User::store($name, $email);
+        if (empty($name) || empty($email)) {
+            Flash::set("Todos os campos são obrigatórios!", "error");
+            header("Location: /usuarios/create");
+            exit;
+        }
 
+        User::store($name, $email);
+        Flash::set("Usuario cadastrado com sucesso!");
         header("Location: /usuarios");
         exit;
     }
@@ -49,10 +56,19 @@ class UserController
         $name = $_POST['name'] ?? '';
         $email = $_POST['email'] ?? '';
 
+        if (empty($name) || empty($email)) {
+            Flash::set("Todos os campos são obrigatórios.", "error");
+            header("Location: /usuarios/edit?id=$id");
+            exit;
+        }
+
         if ($id !== null) {
             User::update($id, $name, $email);
+            Flash::set("Usuario atualizado com sucesso!");
+        } else {
+            Flash::set("ID inválido", "error");
         }
-        print_r($_SESSION['users']);
+
         header("Location: /usuarios");
         exit;
     }
