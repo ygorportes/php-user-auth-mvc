@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+use App\Core\Flash;
+
+$flash = Flash::get();
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

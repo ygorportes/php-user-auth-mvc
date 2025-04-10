@@ -8,7 +8,6 @@ class AuthController
 {
     public function showLogin()
     {
-        $flash = Flash::get();
         require_once __DIR__ . "/../Views/auth/login.php";
     }
 

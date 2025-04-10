@@ -1,8 +1,5 @@
 <?php
 
-use App\Core\Flash;
-
-$flash = \App\Core\Flash::get();
 ob_start();
 ?>
 
@@ -33,6 +30,5 @@ ob_start();
 
 <?php
 $content = ob_get_clean();
-$flash = Flash::get();
 require __DIR__ . '/../layout.php';
 ?>

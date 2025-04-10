@@ -1,8 +1,5 @@
 <?php
 
-use App\Core\Flash;
-
-$flash = Flash::get();
 ob_start();
 ?>
 
@@ -31,7 +28,6 @@ ob_start();
 </div>
 <?php
 $content = ob_get_clean();
-$flash = Flash::get();
 $title = "Editar Usuário";
 require __DIR__ . '/../layout.php';
 ?>

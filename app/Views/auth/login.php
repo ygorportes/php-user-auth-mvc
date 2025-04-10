@@ -1,8 +1,5 @@
 <?php
 
-use App\Core\Flash;
-
-$flash = Flash::get();
 ob_start();
 ?>
 

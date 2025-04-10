@@ -1,5 +1,4 @@
 <?php
-$flash = \App\Core\Flash::get();
 ob_start();
 ?>
 
