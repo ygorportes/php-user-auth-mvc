@@ -51,7 +51,7 @@ Acesse ```http://localhost:8000``` no navegador.
 
 ## 🔮 Próximas implementações
 
-1. Filtros e busca por usuários
+1. Filtros e busca por usuários ✅
 2. Dashboard com gráficos interativos
 3. Exportação de dados
 4. Validação mais robusta
