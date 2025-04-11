@@ -18,7 +18,13 @@ $flash = Flash::get();
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
         <div class="container">
             <a class="navbar-brand" href="/">Auth - PHP</a>
-            <div class="collapse navbar-collapse">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
                         <li class="nav-item"><a class="nav-link" href="/">Início</a></li>
@@ -41,5 +47,7 @@ $flash = Flash::get();
 
         <?= $content ?? '' ?>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
