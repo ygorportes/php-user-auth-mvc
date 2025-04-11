@@ -12,18 +12,24 @@ class UserController
     {
         AuthMiddleware::check();
 
+        $search = $_GET['search'] ?? null;
+        $users = User::all();
+
+        if ($search) {
+            $users = array_filter($users, fn($user) =>
+                stripos($user['name'], $search) !== false
+            );
+        }
+
         $perPage = 10;
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
-        $allUsers = User::all();
-
-        $totalUsers = count($allUsers);
+        $totalUsers = count($users);
         $totalPages = ceil($totalUsers / $perPage);
-
         $page = max(1, min($page, $totalPages));
-
         $offset = ($page - 1) * $perPage;
-        $users = array_slice($allUsers, $offset, $perPage);
+
+        $users = array_slice($users, $offset, $perPage);
 
         require_once __DIR__ . "/../Views/users/index.php";
     }

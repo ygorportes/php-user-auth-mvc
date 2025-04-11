@@ -11,6 +11,11 @@ ob_start();
                 </a>
             </div>
             <h1>Usuários cadastrados</h1>
+            <form method="GET" class="mb-3 d-flex">
+                <input type="text" name="search" class="form-control me-2" placeholder="Buscar por nome" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+
             <table class="table table-hover">
                 <thead>
                     <tr>
