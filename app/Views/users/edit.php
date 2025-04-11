@@ -6,7 +6,7 @@ ob_start();
 <div class="container mt-4">
     <div class="row align-items-center">
         <div class="col-md-10 mx-auto col-lg-5">
-            <h1 class="mb-4">Editar Usuário</h1>
+            <h1 class="mb-4 text-center">Editar Usuário</h1>
 
             <form method="POST" action="/usuarios/update" class="card p-4 shadow-sm">
                 <input type="hidden" name="id" value="<?= $user['id'] ?>">

@@ -21,6 +21,7 @@ $flash = Flash::get();
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
                     <?php if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
+                        <li class="nav-item"><a class="nav-link" href="/">Início</a></li>
                         <li class="nav-item"><a class="nav-link" href="/usuarios">Usuários</a></li>
                         <li class="nav-item"><a class="nav-link" href="/logout">Sair</a></li>
                     <?php else: ?>

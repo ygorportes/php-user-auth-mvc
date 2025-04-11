@@ -4,7 +4,12 @@ ob_start();
 
 <div class="container">
     <div class="row align-items-center">
-        <div class="col-md-10 mx-auto col-lg-8 mb-5">
+        <div class="col-md-10 mx-auto col-lg-10 mb-5">
+            <div class="text-end">
+                <a href="/usuarios/create">
+                    <button type="button" class="btn btn-primary btn-sm me-1">Criar Usuário</button>
+                </a>
+            </div>
             <h1>Usuários cadastrados</h1>
             <table class="table table-hover">
                 <thead>
@@ -55,9 +60,6 @@ ob_start();
                     <?php endif; ?>
                 </ul>
             </nav>
-            <a href="/usuarios/create">
-                <button type="button" class="btn btn-primary btn-sm me-1">Criar Usuário</button>
-            </a>
         </div>
     </div>
 </div>
