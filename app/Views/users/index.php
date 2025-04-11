@@ -34,10 +34,30 @@ ob_start();
                     </tbody>
                 <?php endforeach; ?>
             </table>
+            <nav class="mt-4">
+                <ul class="pagination justify-content-center">
+                    <?php if ($page > 1) : ?>
+                        <li class="page-item">
+                            <a class="page-link" href="?page=<?= $page - 1 ?>">Anterior</a>
+                        </li>
+                    <?php endif; ?>
+
+                    <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
+                        <li class="page-item <?= $i === $page ? 'active' : '' ?>">
+                            <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+                        </li>
+                    <?php endfor; ?>
+
+                    <?php if ($page < $totalPages): ?>
+                        <li class="page-item">
+                            <a class="page-link" href="?page=<?= $page + 1 ?>">Próxima</a>
+                        </li>
+                    <?php endif; ?>
+                </ul>
+            </nav>
             <a href="/usuarios/create">
                 <button type="button" class="btn btn-primary btn-sm me-1">Criar Usuário</button>
             </a>
-            <a href="/logout" class="btn btn-outline-secondary btn-sm me-1">Sair</a>
         </div>
     </div>
 </div>
