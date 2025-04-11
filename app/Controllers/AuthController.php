@@ -20,7 +20,7 @@ class AuthController
         if ($email === 'admin@admin.com' && $password === 'admin123') {
             $_SESSION['logged_in'] = true;
             Flash::set("Login realizado com sucesso!");
-            header("Location: /usuarios");
+            header("Location: /");
             exit;
         }
 
