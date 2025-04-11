@@ -1,14 +1,14 @@
 <?php ob_start(); ?>
 
     <div class="container mt-5">
-        <div class="row mb-4">
-            <div class="col">
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-8 text-center">
                 <h1>Painel Administrativo</h1>
             </div>
         </div>
 
-        <div class="row mb-4">
-            <div class="col-md-6">
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-8">
                 <div class="card text-bg-primary shadow">
                     <div class="card-body">
                         <h5 class="card-title">Total de Usuários</h5>
@@ -19,9 +19,9 @@
         </div>
 
         <?php if (!empty($topDomains)): ?>
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <h4>Top Domínios de E-mail</h4>
+                    <h4 class="text-start">Top Domínios de E-mail</h4>
                     <table class="table table-striped table-hover">
                         <thead>
                         <tr>

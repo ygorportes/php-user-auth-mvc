@@ -4,9 +4,9 @@ ob_start();
 
 <div class="container">
     <div class="row align-items-center">
-        <div class="col-md-10 mx-auto col-lg-8">
+        <div class="col-md-10 mx-auto col-lg-8 mb-5">
             <h1>Usuários cadastrados</h1>
-            <table class="table table-striped">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
