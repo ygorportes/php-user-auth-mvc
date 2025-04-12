@@ -47,6 +47,10 @@ class Router
                 $controller = new UserController();
                 $controller->store();
                 break;
+            case '/usuarios/show':
+                $controller = new UserController();
+                $controller->show();
+                break;
             case '/usuarios/update':
                 $controller = new UserController();
                 $controller->update();

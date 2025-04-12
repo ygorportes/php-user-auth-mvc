@@ -26,7 +26,7 @@ class User
         return self::loadData();
     }
 
-    public static function store($name, $email)
+    public static function store($name, $email, $password, $address = '', $phone = '', $birthdate = '')
     {
         $users = self::loadData();
 
@@ -36,12 +36,17 @@ class User
             $lastId = $lastId['id'];
         }
 
-        $users[] = [
+        $newUser = [
             'id' => $lastId + 1,
             'name' => $name,
-            'email' => $email
+            'email' => $email,
+            'password' => $password,
+            'address' => $address,
+            'phone' => $phone,
+            'birthdate' => $birthdate,
         ];
 
+        $users[] = $newUser;
         self::saveData($users);
     }
 
@@ -58,7 +63,7 @@ class User
         return null;
     }
 
-    public static function update($id, $name, $email)
+    public static function update($id, $name, $email, $address = '', $phone = '', $birthdate = '')
     {
         $users = self::loadData();
 
@@ -66,6 +71,9 @@ class User
             if ((int)$user['id'] === (int)$id) {
                 $users[$index]['name'] = $name;
                 $users[$index]['email'] = $email;
+                $users[$index]['address'] = $address;
+                $users[$index]['phone'] = $phone;
+                $users[$index]['birthdate'] = $birthdate;
                 break;
             }
         }

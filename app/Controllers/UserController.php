@@ -34,6 +34,26 @@ class UserController
         require_once __DIR__ . "/../Views/users/index.php";
     }
 
+    public function show()
+    {
+        $id = $_GET['id'] ?? null;
+
+        if ($id === null) {
+            header("Location: /usuarios");
+            exit;
+        }
+
+        $user = User::find($id);
+
+        if (!$user) {
+            Flash::set("Usuário não encontrado", "error");
+            header("Location: /usuarios");
+            exit;
+        }
+
+        require_once __DIR__ . "/../Views/users/show.php";
+    }
+
     public function create()
     {
         AuthMiddleware::check();
@@ -44,9 +64,13 @@ class UserController
     {
         $name = $_POST['name'];
         $email = $_POST['email'];
+        $password = $_POST['password'];
+        $address = $_POST['address'];
+        $phone = $_POST['phone'];
+        $birthdate = $_POST['birthdate'];
 
-        if (empty($name) || empty($email)) {
-            Flash::set("Todos os campos são obrigatórios!", "error");
+        if (empty($name) || empty($email) || empty($password)) {
+            Flash::set("Nome, e-mail e senha são obrigatórios!", "error");
             header("Location: /usuarios/create");
             exit;
         }
@@ -57,7 +81,9 @@ class UserController
             exit;
         }
 
-        User::store($name, $email);
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        User::store($name, $email, $hashedPassword, $address, $phone, $birthdate);
         Flash::set("Usuario cadastrado com sucesso!");
         header("Location: /usuarios");
         exit;
@@ -84,9 +110,12 @@ class UserController
         $id = $_POST['id'] ?? null;
         $name = $_POST['name'] ?? '';
         $email = $_POST['email'] ?? '';
+        $address = $_POST['address'] ?? '';
+        $phone = $_POST['phone'] ?? '';
+        $birthdate = $_POST['birthdate'] ?? '';
 
         if (empty($name) || empty($email)) {
-            Flash::set("Todos os campos são obrigatórios.", "error");
+            Flash::set("Nome e e-mail são obrigatórios.", "error");
             header("Location: /usuarios/edit?id=$id");
             exit;
         }
@@ -98,13 +127,13 @@ class UserController
         }
 
         if ($id !== null) {
-            User::update($id, $name, $email);
+            User::update($id, $name, $email, $address, $phone, $birthdate);
             Flash::set("Usuario atualizado com sucesso!");
         } else {
             Flash::set("ID inválido", "error");
         }
 
-        header("Location: /usuarios");
+        header("Location: /usuarios/show?id=$id");
         exit;
     }
 
@@ -114,6 +143,7 @@ class UserController
 
         if ($id !== null) {
             User::delete($id);
+            Flash::set("Usuário excluído com sucesso!");
         }
 
         header("Location: /usuarios");
