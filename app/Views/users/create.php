@@ -19,6 +19,11 @@ ob_start();
                     <input type="email" name="email" id="email" class="form-control">
                 </div>
 
+                <div class="mb-3">
+                    <label for="password" class="form-label">Senha</label>
+                    <input type="password" name="password" id="password" class="form-control" required>
+                </div>
+
                 <button type="submit" class="btn btn-primary">Salvar</button>
                 <a href="/usuarios" class="btn btn-secondary mt-2">Cancelar</a>
             </form>
