@@ -57,6 +57,3 @@ Acesse ```http://localhost:8000``` no navegador.
 4. Validação mais robusta
 5. Migração para banco de dados (MySQL)
 6. Testes automatizados
-
-### 🚧 Projeto em constante evolução — contribuições, ideias e sugestões são bem-vindas!
-
